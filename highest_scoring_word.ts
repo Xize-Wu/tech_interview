@@ -10,17 +10,19 @@
 
 // All letters will be lowercase and all inputs will be valid.
 
-export const high = (str: string): string =>{
+export const high = (str: string): string => {
     const arr = str.split(" ");
     const scores = arr.map(word => {
-      const letters = word.split("");
-      const sum = letters.reduce((acc, letter) => acc + letter.charCodeAt(0) - 96, 0)
-      return sum
+        const letters = word.split("");
+        const sum = letters.reduce((acc, letter) => acc + letter.charCodeAt(0) - 96, 0)
+        return sum
     }
     );
-    const max = scores.reduce((acc, curr)=>{
-      return acc < curr ? curr : acc;
-    }, 0)
-    return arr[scores.indexOf(max)]
-  }
-  
+    // const max = scores.reduce((acc, curr) => {
+    //     return acc < curr ? curr : acc;
+    // }, 0)
+
+    const max = Math.max(...scores);
+
+    return arr[scores.indexOf(max)];
+}
